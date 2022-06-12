@@ -16,6 +16,15 @@ namespace _5_lab.Models
 
         public Action DoSomething;
 
+        public MovableObj(float tox, float toy, float defaultX,float  defaultY)
+        {
+            ToX = tox;
+            ToY = toy;
+            this.defaultX = defaultX;
+            this.defaultY = defaultY;
+        }
+
+
         protected abstract void CheckEvents();
 
         public bool IsCome()

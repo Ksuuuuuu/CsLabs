@@ -12,13 +12,13 @@ namespace _5_lab.Models
 
         public Detail curDetail;
         
-        public string detailKind { get; set; }
+        //public string detailKind { get; set; }
         private DateTime lastWork { get; set;}
 
-        public Miller(List<Detail> details, object detailsLocker, 
-            float defaultX, float defaultY, string detailKind): base(defaultX,defaultY)
+        public Miller(List<Detail> details, object detailsLocker, float tox, float toy,
+            float defaultX, float defaultY): base(tox,toy,defaultX,defaultY)
         {
-            this.detailKind = detailKind;
+            //this.detailKind = detailKind;
             this.details = details;
             this.detailsLocker = detailsLocker;
 
@@ -49,7 +49,7 @@ namespace _5_lab.Models
                 return;
             lock (detailsLocker)
             {
-                curDetail = details.Find(d => d.detailKind == this.detailKind && !d.waitProcessing);
+                curDetail = details.Find(d =>  !d.waitProcessing);
                     
                 if (curDetail != null)
                 {
