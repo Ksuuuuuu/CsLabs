@@ -35,6 +35,7 @@ namespace _5_lab.UI
             this.StartBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.addDetailBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.addLoaderBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.addMillerBtn = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +63,8 @@ namespace _5_lab.UI
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StartBtn,
             this.addDetailBtn,
-            this.addLoaderBtn});
+            this.addLoaderBtn,
+            this.addMillerBtn});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(911, 28);
@@ -74,18 +76,28 @@ namespace _5_lab.UI
             this.StartBtn.Name = "StartBtn";
             this.StartBtn.Size = new System.Drawing.Size(72, 24);
             this.StartBtn.Text = "Начать";
+            this.StartBtn.Click += new System.EventHandler(this.StartBtn_Click);
             // 
             // addDetailBtn
             // 
             this.addDetailBtn.Name = "addDetailBtn";
             this.addDetailBtn.Size = new System.Drawing.Size(140, 24);
             this.addDetailBtn.Text = "Добавить деталь";
+            this.addDetailBtn.Click += new System.EventHandler(this.addDetailBtn_Click);
             // 
             // addLoaderBtn
             // 
             this.addLoaderBtn.Name = "addLoaderBtn";
             this.addLoaderBtn.Size = new System.Drawing.Size(165, 24);
             this.addLoaderBtn.Text = "Добавить погрузчик";
+            this.addLoaderBtn.Click += new System.EventHandler(this.addLoaderBtn_Click);
+            // 
+            // addMillerBtn
+            // 
+            this.addMillerBtn.Name = "addMillerBtn";
+            this.addMillerBtn.Size = new System.Drawing.Size(198, 24);
+            this.addMillerBtn.Text = "Добавить фрезеровщика";
+            this.addMillerBtn.Click += new System.EventHandler(this.addMillerBtn_Click);
             // 
             // MainForm
             // 
@@ -114,5 +126,6 @@ namespace _5_lab.UI
         private System.Windows.Forms.ToolStripMenuItem StartBtn;
         private System.Windows.Forms.ToolStripMenuItem addDetailBtn;
         private System.Windows.Forms.ToolStripMenuItem addLoaderBtn;
+        private System.Windows.Forms.ToolStripMenuItem addMillerBtn;
     }
 }

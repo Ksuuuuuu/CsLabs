@@ -14,12 +14,11 @@ namespace _5_lab.Models
 
         public Action<string> notification;
 
-        public Machine(Detail detail, object detailLocker, float x, float y)
+        public Machine(Detail detail, object detailLocker, float x, float y): base(x,y)
         {
             curDetail = detail;
             DetailLocker = detailLocker;
-            X = x;
-            Y = y;
+           
             preparedDetails = new List<Detail>();
         }
 

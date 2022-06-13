@@ -74,6 +74,7 @@ namespace _5_lab.UI
             this.Add.TabIndex = 3;
             this.Add.Text = "Добавить";
             this.Add.UseVisualStyleBackColor = true;
+            this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
             // label1
             // 

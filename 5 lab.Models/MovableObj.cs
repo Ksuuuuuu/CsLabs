@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace _5_lab.Models
 {
-    abstract class MovableObj: Model
+    public abstract class MovableObj: Model
     {
         public float defaultX, defaultY;
 
@@ -16,7 +16,7 @@ namespace _5_lab.Models
 
         public Action DoSomething;
 
-        public MovableObj(float tox, float toy, float defaultX,float  defaultY)
+        public MovableObj(float x, float y,float tox, float toy, float defaultX,float  defaultY): base(x,y)
         {
             ToX = tox;
             ToY = toy;

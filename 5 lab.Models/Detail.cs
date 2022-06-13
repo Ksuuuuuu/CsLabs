@@ -5,7 +5,7 @@ using System.Text;
 namespace _5_lab.Models
 {
 
-    class Detail
+    public class Detail: Model
     {
         public string Name { get; set; }
         //public float X { get; set; }
@@ -19,13 +19,18 @@ namespace _5_lab.Models
         public bool waitLoading { get; set; }
 
 
-        public Detail(string name, string detailKind)
+        public Detail(float x, float y,string name, string detailKind): base(x,y)
         {
             Name = name;
             this.detailKind = detailKind;
             isReady = false;
             waitProcessing = false;
             waitLoading = false;
+        }
+
+        public override void Start()
+        {
+
         }
     }
 }

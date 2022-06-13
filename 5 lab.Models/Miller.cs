@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace _5_lab.Models
 {
-    class Miller : MovableObj
+    public class Miller : MovableObj
     {
         private readonly List<Detail> details;
         private object detailsLocker;
@@ -15,8 +15,8 @@ namespace _5_lab.Models
         //public string detailKind { get; set; }
         private DateTime lastWork { get; set;}
 
-        public Miller(List<Detail> details, object detailsLocker, float tox, float toy,
-            float defaultX, float defaultY): base(tox,toy,defaultX,defaultY)
+        public Miller(List<Detail> details, object detailsLocker, float x, float y, float tox, float toy,
+            float defaultX, float defaultY): base(x, y, tox, toy, defaultX, defaultY)
         {
             //this.detailKind = detailKind;
             this.details = details;
@@ -53,6 +53,7 @@ namespace _5_lab.Models
                     
                 if (curDetail != null)
                 {
+                    
                     curDetail.waitProcessing = true;
 
                     IsLocked = true;

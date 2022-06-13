@@ -14,5 +14,11 @@ namespace _5_lab.Models
         public bool IsCanceled { get; set; }
 
         public abstract void Start();
+
+        public Model(float x, float y)
+        {
+            X = x;
+            Y = y;
+        }
     }
 }
