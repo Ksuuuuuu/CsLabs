@@ -8,20 +8,21 @@ namespace _5_lab.Models.Loaders
     abstract class Loader : MovableObj, ILoader
     {
         private readonly List<Detail> details;
-        private  object detailsLocker;
+        private object detailsLocker;
 
         //загруженные детали
         public List<Detail> loadedDetails;
         Action<string> message;
 
-        abstract public string detailKind { get; };
+        abstract public string detailKind { get; set; }
 
-        public Loader(float defaultX, float defaultY, List<Detail> details, object detailLosker, float tox, float toy):
+        public Loader(string detailKind,float defaultX, float defaultY, List<Detail> details, object detailsLosker, float tox, float toy):
             base (tox,toy,defaultX, defaultY)
         {
+            this.detailKind = detailKind;
             loadedDetails = new List<Detail>();
             this.details = details;
-            this.detailsLocker = detailsLocker;
+            this.detailsLocker = detailsLosker;
         }
 
 

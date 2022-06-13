@@ -17,5 +17,15 @@ namespace _5_lab.Models
         public bool waitProcessing { get; set; }
 
         public bool waitLoading { get; set; }
+
+
+        public Detail(string name, string detailKind)
+        {
+            Name = name;
+            this.detailKind = detailKind;
+            isReady = false;
+            waitProcessing = false;
+            waitLoading = false;
+        }
     }
 }

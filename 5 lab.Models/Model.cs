@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _5_lab.Models
 {
-    abstract class Model
+    abstract public class Model
     {
         public float X { get; set; }
         public float Y { get; set; }
