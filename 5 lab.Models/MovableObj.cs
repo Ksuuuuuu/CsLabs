@@ -7,40 +7,40 @@ namespace _5_lab.Models
 {
     public abstract class MovableObj: Model
     {
-        public float defaultX, defaultY;
+        public float startX, startY;
 
-        public float ToX { get; internal set; }
-        public float ToY { get; internal set; }
+        public float toX { get; internal set; }
+        public float toY { get; internal set; }
 
-        const float maxSpeed = 3;
+        const int countPixels = 3;
 
-        public Action DoSomething;
+        public Action action;
 
-        public MovableObj(float x, float y,float tox, float toy, float defaultX,float  defaultY): base(x,y)
+        public MovableObj(float x, float y,float tox, float toy, float startX,float  startY): base(x,y)
         {
-            ToX = tox;
-            ToY = toy;
-            this.defaultX = defaultX;
-            this.defaultY = defaultY;
+            toX = tox;
+            toY = toy;
+            this.startX = startX;
+            this.startY = startY;
         }
 
 
-        protected abstract void CheckEvents();
+        protected abstract void check();
 
-        public bool IsCome()
+        public bool isEndOfWay()
         {
 
-            return Math.Abs(X - ToX) < 2 && Math.Abs(Y - ToY) < 2;
+            return Math.Abs(X - toX) < 2 && Math.Abs(Y - toY) < 2;
         }
 
-        public override void Start()
+        public override void start()
         {
-            while (!IsCanceled)
+            while (!isCompleted)
             {
-                CheckEvents();
-                Go();
+                check();
+                move();
 
-                DoSomething?.Invoke();
+                action?.Invoke();
 
                 Task.Delay(30).Wait();
             }
@@ -48,20 +48,20 @@ namespace _5_lab.Models
 
         }
 
-        public void Go()
+        public void move()
         {
-            if (IsCome())
+            if (isEndOfWay())
                 return;
 
-            if (X - ToX != 0)
+            if (X - toX != 0)
             {
-                Y += maxSpeed * (ToY - Y) / Math.Abs(X - ToX);
-                X += maxSpeed * Math.Sign(ToX - X);
+                Y += countPixels * (toY - Y) / Math.Abs(X - toX);
+                X += countPixels * Math.Sign(toX - X);
             }
             else
             {
-                X += maxSpeed * (ToX - X) / Math.Abs(Y - ToY);
-                Y += maxSpeed * Math.Sign(Y - ToY);
+                X += countPixels * (toX - X) / Math.Abs(Y - toY);
+                Y += countPixels * Math.Sign(Y - toY);
             }
         }
     }

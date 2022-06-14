@@ -18,8 +18,8 @@ namespace _5_lab.Models.Loaders
 
 
 
-        public Loader(float defaultX, float defaultY, List<Detail> details, object detailsLosker, float tox, float toy):
-            base (defaultX, defaultY,tox, toy,defaultX, defaultY)
+        public Loader(float startX, float startY, List<Detail> details, object detailsLosker, float tox, float toy):
+            base (startX, startY,tox, toy,startX, startY)
         {
             
             loadedDetails = new List<Detail>();
@@ -30,24 +30,24 @@ namespace _5_lab.Models.Loaders
 
         void load()
         {
-            if (IsCome())
+            if (isEndOfWay())
             {
                 message($"Погрузка деталей вида {detailKind} начата");
 
                 Task.Delay(5 * 1000).Wait();
-                DoSomething = null;
-                IsLocked = false;
+                action = null;
+                isLocked = false;
 
 
-                ToX = defaultX;
-                ToY = defaultY;
+                toX = startX;
+                toY = startY;
 
             }
         }
 
-        protected override void CheckEvents()
+        protected override void check()
         {
-            if (IsLocked)
+            if (isLocked)
                 return;
 
             lock (detailsLocker)
@@ -59,8 +59,8 @@ namespace _5_lab.Models.Loaders
                     Action<Detail> action = d => d.waitLoading = true ;
 
                     loadedDetails.ForEach(action);
-                    IsLocked = true;
-                    DoSomething = load; 
+                    isLocked = true;
+                    base.action = load; 
                    
 
                 }

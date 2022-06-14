@@ -13,7 +13,6 @@ namespace _5_lab.Models
         public Detail curDetail;
         
         //public string detailKind { get; set; }
-        private DateTime lastWork { get; set;}
 
         public Miller(List<Detail> details, object detailsLocker, float x, float y, float tox, float toy,
             float defaultX, float defaultY): base(x, y, tox, toy, defaultX, defaultY)
@@ -25,27 +24,27 @@ namespace _5_lab.Models
         }
 
         
-        void Work()
+        void work()
         {
-            if (IsCome())
+            if (isEndOfWay())
             {
                 Task.Delay(5 * 1000).Wait();
 
                 curDetail.isReady = true;
 
-                lastWork = DateTime.Now;
+               
 
-                DoSomething = null;
-                IsLocked = false;
+                action = null;
+                isLocked = false;
 
-                ToX = defaultX;
-                ToY = defaultY;
+                toX = startX;
+                toY = startY;
             }
         }
 
-        protected override void CheckEvents()
+        protected override void check()
         {
-            if (IsLocked)
+            if (isLocked)
                 return;
             lock (detailsLocker)
             {
@@ -56,8 +55,8 @@ namespace _5_lab.Models
                     
                     curDetail.waitProcessing = true;
 
-                    IsLocked = true;
-                    DoSomething = Work;
+                    isLocked = true;
+                    action = work;
                 }
             }
           

@@ -69,7 +69,7 @@ namespace _5_lab.UI
 
                 objects.Add(new DrawObj(Properties.Resources.Detail));
 
-                Task.Run(detail.Start);
+                Task.Run(detail.start);
             }
 
            
@@ -89,7 +89,7 @@ namespace _5_lab.UI
                 kind = inputLoader.kind;
 
 
-            IEnumerable<Type> nameClasses = Assembly.Load("5 lab.Models").GetTypes().Where(type => !type.IsAbstract && !type.IsInterface && type.Name.Contains(kind));
+            IEnumerable<Type> nameClasses = Assembly.Load("5 lab.Models").GetTypes().Where(type =>  type.Name.Contains(kind));
             ConstructorInfo method = nameClasses.First<Type>().GetConstructor(new Type[] { typeof(float), typeof(float),
                 typeof(List < Detail >), typeof(object), typeof(float), typeof(float)});
 
@@ -110,7 +110,7 @@ namespace _5_lab.UI
 
                 models.Add(new DrawModel(loader, imgL));
 
-                Task.Run(loader.Start);
+                Task.Run(loader.start);
 
         }
 
@@ -129,7 +129,7 @@ namespace _5_lab.UI
 
             models.Add(new DrawModel(miller, Properties.Resources.Miller));
 
-            Task.Run(miller.Start);
+            Task.Run(miller.start);
 
 
         }

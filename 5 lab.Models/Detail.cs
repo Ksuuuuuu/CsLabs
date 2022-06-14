@@ -28,7 +28,7 @@ namespace _5_lab.Models
             waitLoading = false;
         }
 
-        public override void Start()
+        public override void start()
         {
 
         }

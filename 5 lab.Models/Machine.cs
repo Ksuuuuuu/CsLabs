@@ -33,9 +33,9 @@ namespace _5_lab.Models
             preparedDetails.Add(curDetail);
         }
 
-        public override void Start()
+        public override void start()
         {
-            while (!IsCanceled)
+            while (!isCompleted)
             {
                 notification("Обработка детали");
                 Task.Delay(4000).Wait();

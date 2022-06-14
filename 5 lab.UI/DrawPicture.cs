@@ -44,7 +44,7 @@ namespace _5_lab.UI
                 {
                     foreach (var elem in objects)
                     {
-                        Draw(elem);
+                        draw(elem);
                     }
                 }
 
@@ -52,7 +52,7 @@ namespace _5_lab.UI
                 {
                     foreach (var elem in models)
                     {
-                        Draw(elem);
+                        draw(elem);
                     }
                 }
 
@@ -61,19 +61,19 @@ namespace _5_lab.UI
         }
 
 
-        void Draw(DrawObj obj)
+        void draw(DrawObj obj)
         {
            
 
             graphics.DrawImage(obj.image,obj.X, obj.Y);
         }
 
-        public void Start()
+        public void start()
         {
             timer.Start();
         }
 
-        public void Stop()
+        public void stop()
         {
             timer.Stop();
         }

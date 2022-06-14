@@ -9,11 +9,11 @@ namespace _5_lab.Models
         public float X { get; set; }
         public float Y { get; set; }
 
-        public bool IsLocked { get;  set; }
+        public bool isLocked { get;  set; }
 
-        public bool IsCanceled { get; set; }
+        public bool isCompleted { get; set; }
 
-        public abstract void Start();
+        public abstract void start();
 
         public Model(float x, float y)
         {
