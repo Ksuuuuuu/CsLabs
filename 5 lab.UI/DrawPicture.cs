@@ -34,7 +34,8 @@ namespace _5_lab.UI
             graphics = Graphics.FromImage(bitmap);
 
             timer = new Timer();
-            timer.Interval = 20;
+            timer.Interval = 40;
+            start();
 
             timer.Tick += new EventHandler((obj, e) =>
             {
@@ -65,7 +66,7 @@ namespace _5_lab.UI
         {
            
 
-            graphics.DrawImage(obj.image,obj.X, obj.Y);
+            graphics.DrawImage(obj.image, obj.X - obj.image.Width / 2, obj.Y - obj.image.Height / 2);
         }
 
         public void start()

@@ -45,14 +45,14 @@ namespace _5_lab.UI
             this.PictureBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.PictureBox.Location = new System.Drawing.Point(12, 41);
             this.PictureBox.Name = "PictureBox";
-            this.PictureBox.Size = new System.Drawing.Size(887, 664);
+            this.PictureBox.Size = new System.Drawing.Size(1381, 736);
             this.PictureBox.TabIndex = 0;
             this.PictureBox.TabStop = false;
             // 
             // MessageBox
             // 
             this.MessageBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.MessageBox.Location = new System.Drawing.Point(454, 671);
+            this.MessageBox.Location = new System.Drawing.Point(948, 209);
             this.MessageBox.Name = "MessageBox";
             this.MessageBox.Size = new System.Drawing.Size(445, 34);
             this.MessageBox.TabIndex = 1;
@@ -67,7 +67,7 @@ namespace _5_lab.UI
             this.addMillerBtn});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(911, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1405, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -103,7 +103,7 @@ namespace _5_lab.UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(911, 717);
+            this.ClientSize = new System.Drawing.Size(1405, 789);
             this.Controls.Add(this.MessageBox);
             this.Controls.Add(this.PictureBox);
             this.Controls.Add(this.menuStrip1);

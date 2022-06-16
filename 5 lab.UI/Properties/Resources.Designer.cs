@@ -73,9 +73,9 @@ namespace _5_lab.UI.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Home {
+        internal static System.Drawing.Bitmap home {
             get {
-                object obj = ResourceManager.GetObject("Home", resourceCulture);
+                object obj = ResourceManager.GetObject("home", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace _5_lab.UI.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Machine {
+        internal static System.Drawing.Bitmap machine {
             get {
-                object obj = ResourceManager.GetObject("Machine", resourceCulture);
+                object obj = ResourceManager.GetObject("machine", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

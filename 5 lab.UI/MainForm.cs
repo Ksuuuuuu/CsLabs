@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _5_lab.Models.Loaders;
 using _5_lab.Models;
 
 namespace _5_lab.UI
@@ -63,11 +64,11 @@ namespace _5_lab.UI
             {
                 string name = inputDetail.name;
                 string kind = inputDetail.kind;
-                Detail detail = new Detail(machine.X + Properties.Resources.Machine.Width / 2, machine.Y + Properties.Resources.Machine.Height / 2,
+                Detail detail = new Detail(machine.X, machine.Y,
                    name , kind);
 
 
-                objects.Add(new DrawObj(Properties.Resources.Detail));
+                objects.Add(new DrawObj(Properties.Resources.Detail, machine.X - 50, machine.Y));
 
                 Task.Run(detail.start);
             }
@@ -84,43 +85,43 @@ namespace _5_lab.UI
         private void addLoaderBtn_Click(object sender, EventArgs e)
         {
             InputLoader inputLoader = new InputLoader();
-            string kind="";
+            string kind = "";
             if (inputLoader.ShowDialog() == DialogResult.OK)
                 kind = inputLoader.kind;
 
-
-            IEnumerable<Type> nameClasses = Assembly.Load("5 lab.Models").GetTypes().Where(type =>  type.Name.Contains(kind));
-            ConstructorInfo method = nameClasses.First<Type>().GetConstructor(new Type[] { typeof(float), typeof(float),
-                typeof(List < Detail >), typeof(object), typeof(float), typeof(float)});
-
-            Image imgM = Properties.Resources.Machine;
-            Image imgS = Properties.Resources.Storage;
-            Image imgL;
-
+            Loader loader = null;
+            Image imgL = null;
+            Image imgM = Properties.Resources.machine;
             if (kind == "Two")
+            {
                 imgL = Properties.Resources.LoaderKindSecond;
-            else
+                loader = new LoaderKindTwo(storage.X, storage.Y, details,
+                    detailsLocker, machine.X - imgM.Width/2, machine.Y);
+            }
+
+            if (kind == "One")
+            {
                 imgL = Properties.Resources.LoaderKindFirst;
+                loader = new LoaderKindOne(storage.X, storage.Y, details,
+                    detailsLocker, machine.X - imgM.Width / 2, machine.Y);
+            }
 
 
-            
-                _5_lab.Models.Loaders.Loader loader = (Models.Loaders.Loader)method.Invoke(new object[] { storage.X - imgS.Width/2, imgS.Height / 2, details,
-                    detailsLocker, machine.X -imgM.Width/2, machine.Y - imgM.Height/2 });
-                loaders.Add(loader);
+            loaders.Add(loader);
 
-                models.Add(new DrawModel(loader, imgL));
+            models.Add(new DrawModel(loader, imgL));
 
-                Task.Run(loader.start);
+            Task.Run(loader.start);
 
         }
 
         void startMiller()
         {
-            float startX = Properties.Resources.Home.Width / 2;
-            float startY = Properties.Resources.Home.Height / 2;
+            float startX = home.X;
+            float startY = home.Y;
 
-            float toX = machine.X + Properties.Resources.Machine.Width / 2;
-            float toY = machine.Y + Properties.Resources.Machine.Height / 2;
+            float toX = machine.X;
+            float toY = machine.Y;
 
 
 
@@ -136,25 +137,27 @@ namespace _5_lab.UI
 
         private void StartBtn_Click(object sender, EventArgs e)
         {
+
             paint = new DrawPicture(PictureBox, objects, objectsLocker, models, modelsLocker);
 
 
-            home = new DrawObj(Properties.Resources.Home);
-            machine = new DrawObj(Properties.Resources.Machine);
+            home = new DrawObj(Properties.Resources.home);
+            machine = new DrawObj(Properties.Resources.machine);
             storage = new DrawObj(Properties.Resources.Storage);
 
-            home.X = 0;
-            home.Y = 0;
+            home.X = Properties.Resources.home.Width / 2;
+            home.Y = Properties.Resources.home.Height / 2;
 
-            machine.X = PictureBox.Width - Properties.Resources.Machine.Width;
-            machine.Y = PictureBox.Height - Properties.Resources.Machine.Height-20;
+            machine.X = PictureBox.Width - Properties.Resources.machine.Width / 2;
+            machine.Y = (PictureBox.Height - Properties.Resources.machine.Height / 2) - 170;
 
-            storage.X = PictureBox.Width - Properties.Resources.Storage.Width;
-            storage.Y = 0;
+            storage.X = Properties.Resources.Storage.Width / 2;
+            storage.Y = (PictureBox.Height - Properties.Resources.Storage.Height / 2)- 120;
 
             objects.Add(home);
             objects.Add(machine);
             objects.Add(storage);
+
 
             addDetailBtn_Click(sender, e);
 

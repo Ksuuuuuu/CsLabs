@@ -7,7 +7,7 @@ namespace _5_lab.UI
 {
     class DrawObj
     {
-        //координаты левого верхнего угла картинки 
+        //координаты центра картинки, сначала хотела через верхний левый угол цепляться, но через центр удобнее
         public virtual float X { get; set; }
         public virtual float Y { get; set; }
 
