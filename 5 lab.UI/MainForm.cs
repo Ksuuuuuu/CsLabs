@@ -61,12 +61,13 @@ namespace _5_lab.UI
             {
                 string name = inputDetail.name;
                 string kind = inputDetail.kind;
+                
                 Detail detail = new Detail(machine.X, machine.Y,
                    name, kind);
 
                 details.Add(detail);
-
-                objects.Add(new DrawObj(Properties.Resources.Detail, machine.X - 50, machine.Y));
+                //Task.Delay(10000);
+                objects.Add(new DrawObj(Properties.Resources.Detail, machine.X - 50, machine.Y- 15));
 
                 Task.Run(detail.start);
             }
@@ -77,6 +78,13 @@ namespace _5_lab.UI
 
         private void addMillerBtn_Click(object sender, EventArgs e)
         {
+            Miller miller = new Miller(details, detailsLocker, home.X, home.Y, printMessage);
+            millers.Add(miller);
+
+            models.Add(new DrawModel(miller, Properties.Resources.Miller));
+
+            Task.Run(miller.start);
+
 
         }
 
@@ -111,6 +119,8 @@ namespace _5_lab.UI
 
             Task.Run(loader.start);
 
+            models.RemoveAll(detail => detail.image == Properties.Resources.Detail);
+
         }
 
         void startMiller()
@@ -118,7 +128,7 @@ namespace _5_lab.UI
             float startX = home.X;
             float startY = home.Y;
 
-            Miller miller = new Miller(details, detailsLocker, startX, startY, startX, startY, printMessage);
+            Miller miller = new Miller(details, detailsLocker, startX, startY, printMessage);
             millers.Add(miller);
 
             models.Add(new DrawModel(miller, Properties.Resources.Miller));
@@ -126,6 +136,39 @@ namespace _5_lab.UI
             Task.Run(miller.start);
 
 
+        }
+
+        void startLoader()
+        {
+
+            Image imgL = Properties.Resources.LoaderKindFirst;
+            Loader loader = new LoaderKindOne(storage.X, storage.Y, details,
+                    detailsLocker, printMessage);
+
+            loaders.Add(loader);
+
+            models.Add(new DrawModel(loader, imgL));
+
+            Task.Run(loader.start);
+
+            
+
+
+        }
+
+        void startDetail()
+        {
+            string name = "Name1";
+            string kind = "Kind One";
+
+            Detail detail = new Detail(machine.X, machine.Y,
+               name, kind);
+
+            details.Add(detail);
+            //Task.Delay(10000);
+            objects.Add(new DrawObj(Properties.Resources.Detail, machine.X - 50, machine.Y - 15));
+
+           // Task.Run(detail.start);
         }
 
         private void StartBtn_Click(object sender, EventArgs e)
@@ -150,12 +193,17 @@ namespace _5_lab.UI
             objects.Add(machine);
             objects.Add(storage);
 
-            addDetailBtn_Click(sender, e);
-
-            addLoaderBtn_Click(sender, e);
+            
 
             paint.start();
             startMiller();
+           
+            startDetail();
+            //addDetailBtn_Click(sender, e);
+            startLoader();
+            //addLoaderBtn_Click(sender, e);
+            //Task.Delay(5000);
+            //objects.RemoveAll(detail => detail.image == Properties.Resources.Detail);
         }
 
 

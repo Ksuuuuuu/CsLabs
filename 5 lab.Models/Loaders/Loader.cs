@@ -77,8 +77,8 @@ namespace _5_lab.Models.Loaders
 
                     loadedDetails.ForEach(action);
                     isLocked = true;
-                    toX = loadedDetails[0].X;
-                    toY = loadedDetails[0].Y;
+                    toX = loadedDetails[0].X - 300;
+                    toY = loadedDetails[0].Y - 50;
                     base.action = load;
                 }
 

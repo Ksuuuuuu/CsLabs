@@ -16,8 +16,8 @@ namespace _5_lab.Models
         //public string detailKind { get; set; }
 
         public Miller(List<Detail> details, object detailsLocker, float x, float y,
-            float defaultX, float defaultY, Action<string> message) :
-            base(x, y, defaultX, defaultY)
+            Action<string> message) :
+            base(x, y, x,y)
         {
             this.details = details;
             this.detailsLocker = detailsLocker;
@@ -28,9 +28,9 @@ namespace _5_lab.Models
         {
             if (isEndOfWay())
             {
-                message($"Делаю деталь {curDetail.Name}");
+                message($"Делаю деталь {curDetail.Name} вида { curDetail.detailKind}");
                 Task.Delay(5 * 1000).Wait();
-                message($"Сделал деталь {curDetail.Name}");
+                message($"Сделал деталь {curDetail.Name} вида { curDetail.detailKind}");
 
                 curDetail.isReady = true;
 
@@ -52,7 +52,7 @@ namespace _5_lab.Models
 
                 if (curDetail != null)
                 {
-                    message($"Иду делать деталь {curDetail.Name}");
+                    message($"Иду делать деталь {curDetail.Name} вида { curDetail.detailKind}");
                     curDetail.waitProcessing = true;
 
                     isLocked = true;
