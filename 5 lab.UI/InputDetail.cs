@@ -22,10 +22,10 @@ namespace _5_lab.UI
         private void Add_Click(object sender, EventArgs e)
         {
             if (radioButton1.Checked == true)
-                kind = "One";
+                kind = "Kind One";
 
             if (radioButton2.Checked == true)
-                kind = "Two";
+                kind = "Kind Two";
 
             name = NameBox.Text.Trim();
             DialogResult = DialogResult.OK;
