@@ -52,9 +52,10 @@ namespace _5_lab.UI
             // MessageBox
             // 
             this.MessageBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.MessageBox.Location = new System.Drawing.Point(948, 209);
+            this.MessageBox.Location = new System.Drawing.Point(968, 41);
+            this.MessageBox.Multiline = true;
             this.MessageBox.Name = "MessageBox";
-            this.MessageBox.Size = new System.Drawing.Size(445, 34);
+            this.MessageBox.Size = new System.Drawing.Size(425, 46);
             this.MessageBox.TabIndex = 1;
             // 
             // menuStrip1

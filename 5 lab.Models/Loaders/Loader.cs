@@ -18,31 +18,46 @@ namespace _5_lab.Models.Loaders
 
 
 
-        public Loader(float startX, float startY, List<Detail> details, object detailsLosker, float tox, float toy):
-            base (startX, startY,tox, toy,startX, startY)
+        public Loader(float startX, float startY, List<Detail> details, object detailsLosker, Action<string> message) :
+            base(startX, startY, startX, startY)
         {
-            
-            loadedDetails = new List<Detail>();
             this.details = details;
             this.detailsLocker = detailsLosker;
+            this.message = message;
         }
-
 
         void load()
         {
             if (isEndOfWay())
             {
                 message($"Погрузка деталей вида {detailKind} начата");
-
                 Task.Delay(5 * 1000).Wait();
-                action = null;
-                isLocked = false;
-
+                action = GoToStorage;
 
                 toX = startX;
                 toY = startY;
 
+                message($"Детали вида {detailKind} доставляются на склад");
+
             }
+        }
+
+
+        void GoToStorage()
+        {
+            if (isEndOfWay())
+            {
+                action = null;
+                isLocked = false;
+
+                message($"Детали вида {detailKind} доставлены на склад");
+            }
+            else
+                details.ForEach(d =>
+                {
+                    d.X = X;
+                    d.Y = Y;
+                });
         }
 
         protected override void check()
@@ -52,19 +67,21 @@ namespace _5_lab.Models.Loaders
 
             lock (detailsLocker)
             {
-               loadedDetails = details.FindAll(d => d.detailKind == this.detailKind);
-               int count = details.RemoveAll(d => d.detailKind == this.detailKind);
-                if (count != 0)
+                loadedDetails = details.FindAll(d => d.detailKind == this.detailKind && !d.waitLoading && d.isReady);
+                details.RemoveAll(d => d.detailKind == this.detailKind && !d.waitLoading && d.isReady);
+                if (loadedDetails.Count > 0)
                 {
-                    Action<Detail> action = d => d.waitLoading = true ;
+                    message($"Иду погружать детали типа {detailKind}");
+
+                    Action<Detail> action = d => d.waitLoading = true;
 
                     loadedDetails.ForEach(action);
                     isLocked = true;
-                    base.action = load; 
-                   
-
+                    toX = loadedDetails[0].X;
+                    toY = loadedDetails[0].Y;
+                    base.action = load;
                 }
-                
+
             }
         }
 

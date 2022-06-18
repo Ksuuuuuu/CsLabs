@@ -17,7 +17,7 @@ namespace _5_lab.UI
         private List<DrawModel> models;
         private object modelsLocker;
 
-        private  Graphics graphics;
+        private Graphics graphics;
 
         Timer timer;
 
@@ -64,7 +64,7 @@ namespace _5_lab.UI
 
         void draw(DrawObj obj)
         {
-           
+
 
             graphics.DrawImage(obj.image, obj.X - obj.image.Width / 2, obj.Y - obj.image.Height / 2);
         }

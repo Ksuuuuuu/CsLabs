@@ -9,8 +9,8 @@ namespace _5_lab.Models.Loaders
         string kind= "Kind One";
         public override string detailKind { get => kind; set => kind = value; }
 
-        public LoaderKindOne(float defaultX, float defaultY, List<Detail> details, object detailLosker, float tox, float toy) :
-            base(defaultX, defaultY, details, detailLosker, tox, toy)
+        public LoaderKindOne(float defaultX, float defaultY, List<Detail> details, object detailLosker, Action<string> message) :
+           base(defaultX, defaultY, details, detailLosker, message)
         {
 
         }

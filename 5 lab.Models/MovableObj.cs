@@ -16,12 +16,12 @@ namespace _5_lab.Models
 
         public Action action;
 
-        public MovableObj(float x, float y,float tox, float toy, float startX,float  startY): base(x,y)
+        public MovableObj(float x, float y, float startX,float  startY): base(x,y)
         {
-            toX = tox;
-            toY = toy;
             this.startX = startX;
             this.startY = startY;
+            toX = startX;
+            toY = startY;
         }
 
 

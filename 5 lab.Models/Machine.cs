@@ -12,7 +12,7 @@ namespace _5_lab.Models
 
         public List<Detail> preparedDetails;
 
-        public Action<string> notification;
+    
 
         public Machine(Detail detail, object detailLocker, float x, float y): base(x,y)
         {
@@ -24,10 +24,10 @@ namespace _5_lab.Models
 
         void processingDetail()
         {
-            notification($"Обработка детали {curDetail.Name} началась");
+           // message($"Обработка детали {curDetail.Name} началась");
             Task.Delay(7000).Wait();
 
-            notification($"Обработка детали {curDetail.Name} закончилась");
+           // message($"Обработка детали {curDetail.Name} закончилась");
             curDetail.isReady = true;
 
             preparedDetails.Add(curDetail);
@@ -37,7 +37,7 @@ namespace _5_lab.Models
         {
             while (!isCompleted)
             {
-                notification("Обработка детали");
+               // message("Обработка детали");
                 Task.Delay(4000).Wait();
 
                 processingDetail();

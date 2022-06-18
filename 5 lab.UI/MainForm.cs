@@ -29,9 +29,9 @@ namespace _5_lab.UI
 
         List<Miller> millers;
 
-        List<Models.Loaders.Loader> loaders;
-       
-      
+        List<Loader> loaders;
+
+
 
         public MainForm()
         {
@@ -47,17 +47,14 @@ namespace _5_lab.UI
             details = new List<Detail>();
             detailsLocker = new object();
 
-            //doctorTypes = Assembly.Load("Lab5.Models").GetTypes()
-            //    .Where(type => !type.IsAbstract && type.GetInterface("IDoctor") != null);
-
-            millers= new List<Miller>();
-            loaders = new List<Models.Loaders.Loader>();
+            millers = new List<Miller>();
+            loaders = new List<Loader>();
         }
 
 
         private void addDetailBtn_Click(object sender, EventArgs e)
         {
-            
+
             InputDetail inputDetail = new InputDetail();
 
             if (inputDetail.ShowDialog() == DialogResult.OK)
@@ -65,15 +62,16 @@ namespace _5_lab.UI
                 string name = inputDetail.name;
                 string kind = inputDetail.kind;
                 Detail detail = new Detail(machine.X, machine.Y,
-                   name , kind);
+                   name, kind);
 
+                details.Add(detail);
 
                 objects.Add(new DrawObj(Properties.Resources.Detail, machine.X - 50, machine.Y));
 
                 Task.Run(detail.start);
             }
 
-           
+
 
         }
 
@@ -96,14 +94,14 @@ namespace _5_lab.UI
             {
                 imgL = Properties.Resources.LoaderKindSecond;
                 loader = new LoaderKindTwo(storage.X, storage.Y, details,
-                    detailsLocker, machine.X - imgM.Width/2, machine.Y);
+                    detailsLocker, printMessage);
             }
 
             if (kind == "One")
             {
                 imgL = Properties.Resources.LoaderKindFirst;
                 loader = new LoaderKindOne(storage.X, storage.Y, details,
-                    detailsLocker, machine.X - imgM.Width / 2, machine.Y);
+                    detailsLocker, printMessage);
             }
 
 
@@ -120,12 +118,7 @@ namespace _5_lab.UI
             float startX = home.X;
             float startY = home.Y;
 
-            float toX = machine.X;
-            float toY = machine.Y;
-
-
-
-            Miller miller = new Miller(details, detailsLocker, startX, startY, toX, toY, startX, startY);
+            Miller miller = new Miller(details, detailsLocker, startX, startY, startX, startY, printMessage);
             millers.Add(miller);
 
             models.Add(new DrawModel(miller, Properties.Resources.Miller));
@@ -140,7 +133,6 @@ namespace _5_lab.UI
 
             paint = new DrawPicture(PictureBox, objects, objectsLocker, models, modelsLocker);
 
-
             home = new DrawObj(Properties.Resources.home);
             machine = new DrawObj(Properties.Resources.machine);
             storage = new DrawObj(Properties.Resources.Storage);
@@ -152,20 +144,18 @@ namespace _5_lab.UI
             machine.Y = (PictureBox.Height - Properties.Resources.machine.Height / 2) - 170;
 
             storage.X = Properties.Resources.Storage.Width / 2;
-            storage.Y = (PictureBox.Height - Properties.Resources.Storage.Height / 2)- 120;
+            storage.Y = (PictureBox.Height - Properties.Resources.Storage.Height / 2) - 120;
 
             objects.Add(home);
             objects.Add(machine);
             objects.Add(storage);
 
-
             addDetailBtn_Click(sender, e);
-
-            startMiller();
 
             addLoaderBtn_Click(sender, e);
 
-
+            paint.start();
+            startMiller();
         }
 
 

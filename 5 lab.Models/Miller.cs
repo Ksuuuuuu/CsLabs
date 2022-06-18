@@ -11,15 +11,14 @@ namespace _5_lab.Models
         private object detailsLocker;
 
         public Detail curDetail;
-        
-        //public string detailKind { get; set; }
+        Action<string> message;
 
-        public Miller(List<Detail> details, object detailsLocker, float x, float y, float tox, float toy,
-            float defaultX, float defaultY): base(x, y, tox, toy, defaultX, defaultY)
+        public Miller(List<Detail> details, object detailsLocker, float x, float y,
+            float defaultX, float defaultY, Action<string> message) : base(x, y, defaultX, defaultY)
         {
-            //this.detailKind = detailKind;
             this.details = details;
             this.detailsLocker = detailsLocker;
+            this.message = message;
 
         }
 
@@ -28,12 +27,12 @@ namespace _5_lab.Models
         {
             if (isEndOfWay())
             {
+                message($"Делаю деталь {curDetail.Name}");
                 Task.Delay(5 * 1000).Wait();
-
+                message($"Сделал деталь {curDetail.Name}");
                 curDetail.isReady = true;
 
-               
-
+              
                 action = null;
                 isLocked = false;
 
@@ -52,10 +51,12 @@ namespace _5_lab.Models
                     
                 if (curDetail != null)
                 {
-                    
+                    message($"Иду делать деталь {curDetail.Name}");
                     curDetail.waitProcessing = true;
 
                     isLocked = true;
+                    toX = curDetail.X;
+                    toY = curDetail.Y;
                     action = work;
                 }
             }
