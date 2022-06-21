@@ -97,7 +97,7 @@ namespace _5_lab.UI
 
             Loader loader = null;
             Image imgL = null;
-            Image imgM = Properties.Resources.machine;
+            Image imgM = Properties.Resources.Machine;
             if (kind == "Two")
             {
                 imgL = Properties.Resources.LoaderKindSecond;
@@ -176,15 +176,15 @@ namespace _5_lab.UI
 
             paint = new DrawPicture(PictureBox, objects, objectsLocker, models, modelsLocker);
 
-            home = new DrawObj(Properties.Resources.home);
-            machine = new DrawObj(Properties.Resources.machine);
+            home = new DrawObj(Properties.Resources.Home);
+            machine = new DrawObj(Properties.Resources.Machine);
             storage = new DrawObj(Properties.Resources.Storage);
 
-            home.X = Properties.Resources.home.Width / 2;
-            home.Y = Properties.Resources.home.Height / 2;
+            home.X = Properties.Resources.Home.Width / 2;
+            home.Y = Properties.Resources.Home.Height / 2;
 
-            machine.X = PictureBox.Width - Properties.Resources.machine.Width / 2;
-            machine.Y = (PictureBox.Height - Properties.Resources.machine.Height / 2) - 170;
+            machine.X = PictureBox.Width - Properties.Resources.Machine.Width / 2;
+            machine.Y = (PictureBox.Height - Properties.Resources.Machine.Height / 2) - 170;
 
             storage.X = Properties.Resources.Storage.Width / 2;
             storage.Y = (PictureBox.Height - Properties.Resources.Storage.Height / 2) - 120;

@@ -35,7 +35,6 @@ namespace _5_lab.UI
             // 
             // ListBox
             // 
-            this.ListBox.FormattingEnabled = true;
             this.ListBox.Items.AddRange(new object[] {
             "Kind One",
             "Kind Two"});

@@ -55,6 +55,7 @@ namespace _5_lab.UI
             this.MessageBox.Location = new System.Drawing.Point(782, 41);
             this.MessageBox.Multiline = true;
             this.MessageBox.Name = "MessageBox";
+            this.MessageBox.ReadOnly = true;
             this.MessageBox.Size = new System.Drawing.Size(611, 46);
             this.MessageBox.TabIndex = 1;
             // 
