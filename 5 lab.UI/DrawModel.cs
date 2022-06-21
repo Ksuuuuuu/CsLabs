@@ -8,15 +8,15 @@ namespace _5_lab.UI
 {
     class DrawModel: DrawObj
     {
-        public Model model { get; }
+        public Model Model { get; }
 
-        public override float X { get => model.X; }
-        public override float Y { get => model.Y; }
+        public override float X { get => Model.X; }
+        public override float Y { get => Model.Y; }
 
         public DrawModel (Model model, Image image)
             : base(image)
         {
-            this.model = model;
+            this.Model = model;
         }
     }
 }

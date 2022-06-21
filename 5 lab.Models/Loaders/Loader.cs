@@ -14,7 +14,7 @@ namespace _5_lab.Models.Loaders
         public List<Detail> loadedDetails;
         Action<string> message;
 
-        public abstract string detailKind { get; set; }
+        public abstract string DetailKind { get; set; }
 
 
 
@@ -26,18 +26,18 @@ namespace _5_lab.Models.Loaders
             this.message = message;
         }
 
-        void load()
+        void Load()
         {
             if (isEndOfWay())
             {
-                message($"Погрузка деталей вида {detailKind} начата");
+                message($"Погрузка деталей вида {DetailKind} начата");
                 Task.Delay(5 * 1000).Wait();
                 action = GoToStorage;
 
                 toX = startX;
                 toY = startY;
 
-                message($"Детали вида {detailKind} доставляются на склад");
+                message($"Детали вида {DetailKind} доставляются на склад");
 
             }
         }
@@ -50,7 +50,7 @@ namespace _5_lab.Models.Loaders
                 action = null;
                 isLocked = false;
 
-                message($"Детали вида {detailKind} доставлены на склад");
+                message($"Детали вида {DetailKind} доставлены на склад");
             }
             else
                 details.ForEach(d =>
@@ -67,11 +67,11 @@ namespace _5_lab.Models.Loaders
 
             lock (detailsLocker)
             {
-                loadedDetails = details.FindAll(d => d.detailKind == this.detailKind && !d.waitLoading && d.isReady);
-                details.RemoveAll(d => d.detailKind == this.detailKind && !d.waitLoading && d.isReady);
+                loadedDetails = details.FindAll(d => d.detailKind == this.DetailKind && !d.waitLoading && d.isReady);
+                details.RemoveAll(d => d.detailKind == this.DetailKind && !d.waitLoading && d.isReady);
                 if (loadedDetails.Count > 0)
                 {
-                    message($"Иду погружать детали типа {detailKind}");
+                    message($"Иду погружать детали типа {DetailKind}");
 
                     Action<Detail> action = d => d.waitLoading = true;
 
@@ -79,7 +79,7 @@ namespace _5_lab.Models.Loaders
                     isLocked = true;
                     toX = loadedDetails[0].X - 300;
                     toY = loadedDetails[0].Y - 50;
-                    base.action = load;
+                    base.action = Load;
                 }
 
             }

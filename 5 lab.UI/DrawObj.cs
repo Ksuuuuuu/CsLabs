@@ -11,16 +11,16 @@ namespace _5_lab.UI
         public virtual float X { get; set; }
         public virtual float Y { get; set; }
 
-        public Image image { get; set; }
+        public Image Image { get; set; }
 
         public DrawObj(Image image)
         {
-            this.image = image;
+            this.Image = image;
         }
 
         public DrawObj(Image image, float x, float y)
         {
-            this.image = image;
+            this.Image = image;
             X = x;
             Y = y;
         }

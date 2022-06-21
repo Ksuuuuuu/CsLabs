@@ -10,17 +10,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using _5_lab.Models.Loaders;
 using _5_lab.Models;
+using System.Threading;
 
 namespace _5_lab.UI
 {
     public partial class MainForm : Form
     {
+        //список зданий и объектов и локер
         List<DrawObj> objects;
         object objectsLocker;
 
+        //список двигающихся моделей и локер
         List<DrawModel> models;
         object modelsLocker;
 
+        //отображение картинок
         DrawPicture paint;
 
         DrawObj home, storage, machine;
@@ -31,7 +35,8 @@ namespace _5_lab.UI
 
         List<Loader> loaders;
 
-
+        //закрывалка для задач
+        static CancellationTokenSource cts = new CancellationTokenSource();
 
         public MainForm()
         {
@@ -69,7 +74,7 @@ namespace _5_lab.UI
                 //Task.Delay(10000);
                 objects.Add(new DrawObj(Properties.Resources.Detail, machine.X - 50, machine.Y- 15));
 
-                Task.Run(detail.start);
+                Task.Run(detail.start, cts.Token);
             }
 
 
@@ -83,7 +88,7 @@ namespace _5_lab.UI
 
             models.Add(new DrawModel(miller, Properties.Resources.Miller));
 
-            Task.Run(miller.start);
+            Task.Run(miller.start, cts.Token);
 
 
         }
@@ -117,9 +122,9 @@ namespace _5_lab.UI
 
             models.Add(new DrawModel(loader, imgL));
 
-            Task.Run(loader.start);
+            Task.Run(loader.start, cts.Token);
 
-            models.RemoveAll(detail => detail.image == Properties.Resources.Detail);
+            objects.RemoveAll(detail => detail.Image == Properties.Resources.Detail);
 
         }
 
@@ -133,7 +138,7 @@ namespace _5_lab.UI
 
             models.Add(new DrawModel(miller, Properties.Resources.Miller));
 
-            Task.Run(miller.start);
+            Task.Run(miller.start, cts.Token);
 
 
         }
@@ -148,8 +153,9 @@ namespace _5_lab.UI
             loaders.Add(loader);
 
             models.Add(new DrawModel(loader, imgL));
+            objects.RemoveAll(detail => detail.Image == Properties.Resources.Detail);
 
-            Task.Run(loader.start);
+            Task.Run(loader.start, cts.Token);
 
             
 
@@ -169,6 +175,12 @@ namespace _5_lab.UI
             objects.Add(new DrawObj(Properties.Resources.Detail, machine.X - 50, machine.Y - 15));
 
            // Task.Run(detail.start);
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            paint.StopTimer();
+            cts.Cancel();
         }
 
         private void StartBtn_Click(object sender, EventArgs e)
@@ -195,7 +207,7 @@ namespace _5_lab.UI
 
             
 
-            paint.start();
+            paint.StartTimer();
             startMiller();
            
             startDetail();

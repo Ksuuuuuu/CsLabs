@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace _5_lab.Models
@@ -35,15 +36,19 @@ namespace _5_lab.Models
 
         public override void start()
         {
-            while (!isCompleted)
+            try
             {
-                check();
-                move();
+                while (!isCompleted)
+                {
+                    check();
+                    move();
 
-                action?.Invoke();
+                    action?.Invoke();
 
-                Task.Delay(30).Wait();
+                    Task.Delay(30).Wait();
+                }
             }
+            catch (OperationCanceledException) { }
 
 
         }

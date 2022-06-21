@@ -35,7 +35,7 @@ namespace _5_lab.UI
 
             timer = new Timer();
             timer.Interval = 40;
-            start();
+            StartTimer();
 
             timer.Tick += new EventHandler((obj, e) =>
             {
@@ -45,7 +45,7 @@ namespace _5_lab.UI
                 {
                     foreach (var elem in objects)
                     {
-                        draw(elem);
+                        Draw(elem);
                     }
                 }
 
@@ -53,7 +53,7 @@ namespace _5_lab.UI
                 {
                     foreach (var elem in models)
                     {
-                        draw(elem);
+                        Draw(elem);
                     }
                 }
 
@@ -62,19 +62,19 @@ namespace _5_lab.UI
         }
 
 
-        void draw(DrawObj obj)
+        void Draw(DrawObj obj)
         {
 
 
-            graphics.DrawImage(obj.image, obj.X - obj.image.Width / 2, obj.Y - obj.image.Height / 2);
+            graphics.DrawImage(obj.Image, obj.X - obj.Image.Width / 2, obj.Y - obj.Image.Height / 2);
         }
 
-        public void start()
+        public void StartTimer()
         {
             timer.Start();
         }
 
-        public void stop()
+        public void StopTimer()
         {
             timer.Stop();
         }
