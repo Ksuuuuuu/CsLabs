@@ -10,9 +10,9 @@ namespace Parts
     {
         string model = "intel core i5 9400f";
         int countCore = 6;
-        bool isOn { get; set; }
+        bool IsOn { get; set; }
 
-        public string getData()
+        public string GetData()
         {
             return "Модель процессора: " + model + "\nКол-во ядер: "
                 + countCore.ToString();
@@ -20,12 +20,12 @@ namespace Parts
 
         public void On()
         {
-            isOn = true;
+            IsOn = true;
         }
 
         public void Off()
         {
-            isOn = false;
+            IsOn = false;
         }
     }
 }

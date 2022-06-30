@@ -41,22 +41,22 @@ namespace Device
             return false;
         }
 
-        public bool checkVirus()
+        public bool СheckViruC()
         {
-            return Winchester.checkVirus();
+            return Winchester.CheckVirus();
         }
 
-        public int download()
+        public int Download()
         {
-            return Winchester.download();
+            return Winchester.Download();
         }
 
-        public string getData()
+        public string GetData()
         {
-            return "Модель: " + model + "\nДанные о жестком диске\n" + Winchester.getVolumeData() +
-                "\nДанные об оперативной памяти\n" + RamMemory.getData() +
-                "\nДанные о процессоре\n" + Processor.getData() +
-                "\nДанные о видеокарте\n" + VideoCard.getData();
+            return "Модель: " + model + "\nДанные о жестком диске\n" + Winchester.GetVolumeData() +
+                "\nДанные об оперативной памяти\n" + RamMemory.GetData() +
+                "\nДанные о процессоре\n" + Processor.GetData() +
+                "\nДанные о видеокарте\n" + VideoCard.GetData();
         }
 
       

@@ -9,19 +9,19 @@ namespace Parts
     public class RamMemory
     {
         const int capacity = 8;
-        bool isOn { get; set; }
+        bool IsOn { get; set; }
 
         public void On()
         {
-            isOn = true;
+            IsOn = true;
         }
 
         public void Off()
         {
-            isOn = false;
+            IsOn = false;
         }
 
-        public string getData()
+        public string GetData()
         {
             return "Объем: " + capacity.ToString()+" ГБ";
         }

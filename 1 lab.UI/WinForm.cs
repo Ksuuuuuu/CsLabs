@@ -42,13 +42,13 @@ namespace WinForm
 
         private void GetData_Click(object sender, EventArgs e)
         {
-            string data = Computer.getData();
+            string data = Computer.GetData();
             MessageBox.Show(data, "Данные", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void Download_Click(object sender, EventArgs e)
         {
-            int volume = Computer.download();
+            int volume = Computer.Download();
             if (volume == -1)
                 MessageBox.Show("Диск заполнен", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             else
@@ -57,7 +57,7 @@ namespace WinForm
 
         private void CheckV_Click(object sender, EventArgs e)
         {
-            bool isVirus = Computer.checkVirus();
+            bool isVirus = Computer.СheckViruC();
             if (isVirus)
                 MessageBox.Show("Найден вирус", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else

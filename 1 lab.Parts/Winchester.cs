@@ -9,46 +9,46 @@ namespace Parts
     public class Winchester
     {
         const int capacity = 256;
-        int size { get; set; }
-        bool isOn { get; set; }
-        bool isVirus { get; set; }
+        int Size { get; set; }
+        bool IsOn { get; set; }
+        bool IsVirus { get; set; }
 
         public Winchester()
         {
-            size = 0;
-            isOn = false;
-            isVirus = false;
+            Size = 0;
+            IsOn = false;
+            IsVirus = false;
         }
 
         public void On()
         {
-            isOn = true;
+            IsOn = true;
         }
 
         public void Off()
         {
-            isOn = false;
+            IsOn = false;
         }
-        public string getVolumeData()
+        public string GetVolumeData()
         {
             return "Общий объем: " + capacity.ToString()+" ГБ" + "\nЗаполненная память: "
-                + size.ToString() + " ГБ" + "\nСвободная память: " + (capacity - size).ToString() + " ГБ";
+                + Size.ToString() + " ГБ" + "\nСвободная память: " + (capacity - Size).ToString() + " ГБ";
         }
 
 
-        public bool checkVirus()
+        public bool CheckVirus()
         {
-            return isVirus;
+            return IsVirus;
         }
 
-        public int download()
+        public int Download()
         {
-            if (capacity == size)
+            if (capacity == Size)
                 return -1;
             Random rnd = new Random();
-            int value = rnd.Next() % (capacity - size)+1;
-            size += value;
-            isVirus = value % 2 != 0;
+            int value = rnd.Next() % (capacity - Size)+1;
+            Size += value;
+            IsVirus = value % 2 != 0;
             return value;
         }
     }

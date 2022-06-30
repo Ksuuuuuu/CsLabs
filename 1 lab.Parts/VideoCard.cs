@@ -10,21 +10,21 @@ namespace Parts
     {
         string model = "GeForce GTX 1050 Ti";
         int volume = 4;
-        bool isOn { get; set; }
+        bool IsOn { get; set; }
 
-        public string getData()
+        public string GetData()
         {
             return "Модель: " + model + "\nОбъем: " + volume.ToString()+" ГБ";
         }
 
         public void On()
         {
-            isOn = true;
+            IsOn = true;
         }
 
         public void Off()
         {
-            isOn = false;
+            IsOn = false;
         }
     }
 }
