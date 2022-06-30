@@ -32,17 +32,6 @@ namespace _4_лабораторная
             
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            lib = Assembly.LoadFrom("ClassLibrary.dll");
-            types = lib.GetTypes();
-            foreach (Type type in types)
-            {
-                if (type.IsClass && !type.IsAbstract)
-                    comboBox1.Items.Add(type.Name);
-            }
-
-        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -119,6 +108,17 @@ namespace _4_лабораторная
             }
 
             
+        }
+
+        private void Reflex_Load(object sender, EventArgs e)
+        {
+            lib = Assembly.LoadFrom("ClassLibrary.dll");
+            types = lib.GetTypes();
+            foreach (Type type in types)
+            {
+                if (type.IsClass && !type.IsAbstract)
+                    comboBox1.Items.Add(type.Name);
+            }
         }
     }
 }

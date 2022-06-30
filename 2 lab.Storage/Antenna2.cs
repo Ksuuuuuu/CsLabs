@@ -19,20 +19,20 @@ namespace lab2
             Type = t;
         }
 
-        public override double getQuality()
+        public override double GetQuality()
         {
             if (Type == SuspensionType.Azimuthal)
-                return base.getQuality();
+                return base.GetQuality();
             if (Type==SuspensionType.Polar)
-                return 2*base.getQuality();
+                return 2*base.GetQuality();
             if (Type == SuspensionType.Toroidal)
-                return 2.5 * base.getQuality();
+                return 2.5 * base.GetQuality();
             return 0;
         }
 
-        public override string getData()
+        public override string GetData()
         {
-            return base.getData() + "\nТип подвески " + Type;
+            return base.GetData() + "\nТип подвески " + Type;
         }
     }
 }

@@ -30,7 +30,7 @@ namespace _2_лаба__полиморфизм_
 
         private void Level_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Уровень- "+level+"\n"+antenna.getData() + "\nКачество " + antenna.getQuality(),"Данные",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("Уровень- "+level+"\n"+antenna.GetData() + "\nКачество " + antenna.GetQuality(),"Данные",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
     }
 }

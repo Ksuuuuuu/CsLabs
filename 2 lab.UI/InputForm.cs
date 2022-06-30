@@ -20,7 +20,7 @@ namespace _2_лаба__полиморфизм_
             InitializeComponent();
             this.level = level;
         }
-        public void readDataFirstLevel()
+        public void ReadDataFirstLevel()
         {
             int d = int.Parse(diamBox.Text);
             string m = MatherialBox.Text;
@@ -28,7 +28,7 @@ namespace _2_лаба__полиморфизм_
             antenna = new Antenna1(d, m, c);
         }
 
-        public void readDataSecondLevel()
+        public void ReadDataSecondLevel()
         {
             int d = int.Parse(diamBox.Text);
             string m = MatherialBox.Text;
@@ -60,11 +60,11 @@ namespace _2_лаба__полиморфизм_
         {
             if (Level1r.Checked == true)
             {
-                readDataFirstLevel();
+                ReadDataFirstLevel();
             }
             if (Level2r.Checked == true)
             {
-                readDataSecondLevel();
+                ReadDataSecondLevel();
             }
             Form1 f1 = this.Owner as Form1;
             f1.antenna = this.antenna;

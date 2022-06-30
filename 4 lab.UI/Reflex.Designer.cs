@@ -110,7 +110,7 @@ namespace _4_лабораторная
             this.Do.UseVisualStyleBackColor = true;
             this.Do.Click += new System.EventHandler(this.Do_Click);
             // 
-            // Form1
+            // Reflex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -123,9 +123,9 @@ namespace _4_лабораторная
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "Reflex";
+            this.Text = "Reflex";
+            this.Load += new System.EventHandler(this.Reflex_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

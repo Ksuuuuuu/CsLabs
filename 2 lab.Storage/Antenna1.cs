@@ -19,12 +19,12 @@ namespace lab2
             Cost = c;
         }
 
-        public virtual double getQuality()
+        public virtual double GetQuality()
         {
             return Diam / Cost;
         }
 
-        public virtual string getData()
+        public virtual string GetData()
         {
             return "Диаметр " + Diam + "\nМатериал " + Matherial + "\nЦена " + Cost;
         }
